@@ -13,12 +13,12 @@ Before installing Kubernetes, we need to install some tools that we will be usin
 
 You might need docker for local development of containers before deploying
 them to Kubernetes. So, we recommend that you install Docker on the master
-VM to have the tools available to you.
+VM to have the tools available to you. Notice that seeing errors in this section (setting the permissions for Docker) is OK.
 
 ```sh
 # install docker
 curl -sSL https://get.docker.com | sh
-# fix the user permissions for running docker **(seeing errors in this section is OK)**
+# fix the user permissions for running docker seeing errors in this section is OK
 sudo usermod -aG docker $USER
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chmod g+rwx "/home/$USER/.docker" -R
