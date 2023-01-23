@@ -9,7 +9,7 @@ following:
 
 [![Screenshot of load generator](./img/locust-01.png)](./img/locust-01.png)
 
-For now just change spawn rate to `10` and leave everything else as is and
+For now just set the **spawn rate** to `10` and leave everything else as is and
 click on `start swarming`. You will be faced with a page showing charts and
 statistics about the workload. In the `charts` tab you should see a page similar
 to the following:
