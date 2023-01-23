@@ -18,7 +18,7 @@ VM to have the tools available to you.
 ```sh
 # install docker
 curl -sSL https://get.docker.com | sh
-# fix the user permissions for running docker (seeing errors in this section is OK)
+# fix the user permissions for running docker **(seeing errors in this section is OK)**
 sudo usermod -aG docker $USER
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chmod g+rwx "/home/$USER/.docker" -R
@@ -109,45 +109,14 @@ export PATH=$PATH:$HOME/.arkade/bin/
 
 ```
 
-Let's test our installation:
+You can test your installation using following commands. Notice that the error shown for `kubectl version` is not important, as we have not yet installed our kubernetes cluster.
 
 ```console
 $ arkade version
-            _             _
-  __ _ _ __| | ____ _  __| | ___
- / _` | '__| |/ / _` |/ _` |/ _ \
-| (_| | |  |   < (_| | (_| |  __/
- \__,_|_|  |_|\_\__,_|\__,_|\___|
-
-Get Kubernetes apps the easy way
-
-Version: 0.6.37
-Git Commit: 1038de3c2013fa390c024d9c9951d7e6eb332515
-
 $ helm version
-version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
-
 $ kubectl version
-error: Missing or incomplete configuration info.  Please point to an existing, complete config file:
-
-  1. Via the command-line flag --kubeconfig
-  2. Via the KUBECONFIG environment variable
-  3. In your home directory as ~/.kube/config
-
-To view or setup config directly use the 'config' command.
-
 $ k3sup version
- _    _____
-| | _|___ / ___ _   _ _ __
-| |/ / |_ \/ __| | | | '_ \
-|   < ___) \__ \ |_| | |_) |
-|_|\_\____/|___/\__,_| .__/
-                     |_|
-Version: 0.9.13
-Git Commit: 95fc8b074a6e0ea48ea03a695491e955e32452ea
-```
 
-The error shown for `kubectl` is not important, as we have not yet installed our kubernetes cluster.
 
 ### Optional Tools
 
@@ -176,7 +145,7 @@ k3sup install \
   --local \
   --k3s-channel stable \
   --local-path ~/.kube/config \
-  --k3s-extra-args "--node-external-ip $MASTER_IP --node-ip $MASTER_IP --bind-address $MASTER_IP --no-deploy traefik --write-kubeconfig-mode 644" \
+  --k3s-extra-args "--node-external-ip $MASTER_IP --node-ip $MASTER_IP --bind-address $MASTER_IP --disable traefik --write-kubeconfig-mode 644" \
   --print-command
 ```
 
@@ -184,17 +153,14 @@ If everything goes smoothly, you should see an output like the following:
 
 ```console
 Running: k3sup install
-2021/01/15 20:04:11 127.0.0.1
-Executing: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC='server --tls-san 127.0.0.1 --no-deploy traefik --write-kubeconfig-mode 644' INSTALL_K3S_CHANNEL='stable' sh -
 
 [INFO]  Finding release for channel stable
-[INFO]  Using v1.20.0+k3s2 as release
-[INFO]  Downloading hash https://github.com/rancher/k3s/releases/download/v1.20.0+k3s2/sha256sum-amd64.txt
-[INFO]  Downloading binary https://github.com/rancher/k3s/releases/download/v1.20.0+k3s2/k3s
-[INFO]  Verifying binary download
-[INFO]  Installing k3s to /usr/local/bin/k3s
+[INFO]  Using v1.25.5+k3s2 as release
+[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.25.5+k3s2/sha256sum-amd64.txt
+[INFO]  Skipping binary downloaded, installed k3s matches hash
+[INFO]  Skipping installation of SELinux RPM
 [INFO]  Skipping /usr/local/bin/kubectl symlink to k3s, command exists in PATH at /home/ubuntu/.arkade/bin/kubectl
-[INFO]  Creating /usr/local/bin/crictl symlink to k3s
+[INFO]  Skipping /usr/local/bin/crictl symlink to k3s, already exists
 [INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
 [INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
 [INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
@@ -203,11 +169,11 @@ Executing: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC='server --tls-san 127
 [INFO]  systemd: Enabling k3s unit
 Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
 [INFO]  systemd: Starting k3s
-stderr: "Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.\n"stdout: "[INFO]  Finding release for channel stable\n[INFO]  Using v1.20.0+k3s2 as release\n[INFO]  Downloading hash https://github.com/rancher/k3s/releases/download/v1.20.0+k3s2/sha256sum-amd64.txt\n[INFO]  Downloading binary https://github.com/rancher/k3s/releases/download/v1.20.0+k3s2/k3s\n[INFO]  Verifying binary download\n[INFO]  Installing k3s to /usr/local/bin/k3s\n[INFO]  Skipping /usr/local/bin/kubectl symlink to k3s, command exists in PATH at /home/ubuntu/.arkade/bin/kubectl\n[INFO]  Creating /usr/local/bin/crictl symlink to k3s\n[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr\n[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh\n[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh\n[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env\n[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service\n[INFO]  systemd: Enabling k3s unit\n[INFO]  systemd: Starting k3s\n"Saving file to: /home/ubuntu/.kube/config
+stdout: "[INFO]  Finding release for channel stable\n[INFO]  Using v1.25.5+k3s2 as release\n[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.25.5+k3s2/sha256sum-amd64.txt\n[INFO]  Skipping binary downloaded, installed k3s matches hash\n[INFO]  Skipping installation of SELinux RPM\n[INFO]  Skipping /usr/local/bin/kubectl symlink to k3s, command exists in PATH at /home/ubuntu/.arkade/bin/kubectl\n[INFO]  Skipping /usr/local/bin/crictl symlink to k3s, already exists\n[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr\n[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh\n[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh\n[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env\n[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service\n[INFO]  systemd: Enabling k3s unit\n[INFO]  systemd: Starting k3s\n"Saving file to: /home/ubuntu/.kube/config
 
 # Test your cluster with:
 export KUBECONFIG=/home/ubuntu/.kube/config
-kubectl config set-context default
+kubectl config use-context default
 kubectl get node -o wide
 ```
 
@@ -233,9 +199,13 @@ for windows, or run the following for MacOS and Linux:
 ```sh
 curl -sLS https://get.k3sup.dev | sudo sh
 ```
+if it didn't work try: < /br>
+```sh
+curl -sLS https://get.k3sup.dev | sh
+```
 
 Next, you need to have the `worker nodes` join your kubernetes cluster. Run the following
-commands on your laptop (replace the master and worker IPs). Make sure to repeat this process
+commands on your **laptop** (replace the master and worker IPs). Make sure to repeat this process
 for every worker node in the cluster.
 
 ```sh
