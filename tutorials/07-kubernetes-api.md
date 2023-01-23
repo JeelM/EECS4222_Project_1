@@ -19,7 +19,7 @@ Kubernetes API:
 pip install kubernetes==12.0.1
 ```
 
-Then, we can move to our python code. You may use the [VS Code Jupyter Extension](https://code.visualstudio.com/docs/python/jupyter-support) for the next steps, or use simple `.py` files.
+Then, we can move to our python code. You may use the [VS Code Jupyter Extension](https://code.visualstudio.com/docs/python/jupyter-support) for the next steps (from right panel choose Jupyter extension and from File tab choose new file -> python file), or use simple `.py` files.
 The following imports libraries
 and defines a couple of helper functions that we can use later on.
 
@@ -42,7 +42,9 @@ def set_replica_num(rnum, deployment_name, deployment_ns="default"):
     api_instance.patch_namespaced_deployment_scale(deployment_name, deployment_ns, api_response)
 ```
 
-Now we can use these functions to get or change the replica count for each deployment. For example, to get the number of set and ready pods for the `frontend` deployment, we can use the following:
+Now we can use these functions to get or change the replica count for each deployment.
+<br />	
+For example, to get the number of set and ready pods for the `frontend` deployment, we can use the following (you may need to run the following command with short delay to see the changes after using the **set_replica_num()** function):
 
 ```py
 get_replica_and_ready('frontend')
