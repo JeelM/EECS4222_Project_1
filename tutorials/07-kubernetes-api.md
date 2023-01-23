@@ -44,7 +44,7 @@ def set_replica_num(rnum, deployment_name, deployment_ns="default"):
 
 Now we can use these functions to get or change the replica count for each deployment.
 <br />	
-For example, to get the number of set and ready pods for the `frontend` deployment, we can use the following (you may need to run the following command with short delay to see the changes after using the **set_replica_num()** function):
+For example, to get the number of set and ready pods for the `frontend` deployment, we can use the following (you may need to run the following command with a short delay to see the changes after using the **set_replica_num()** function):
 
 ```py
 get_replica_and_ready('frontend')
