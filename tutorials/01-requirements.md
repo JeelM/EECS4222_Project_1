@@ -54,11 +54,18 @@ To learn more about SSH and how you can use it, watch [this tutorial](https://yo
 
 The easiest way to interact with your virtual machine is using Visual Studio Code 
 Remote Development via SSH. To use this feature, you need to install the
-[Visual Studio Code](https://code.visualstudio.com/) and the [Remote Development using SSH](https://code.visualstudio.com/docs/remote/ssh)
+[Visual Studio Code](https://code.visualstudio.com/) and the [Remote Development using SSH](https://code.visualstudio.com/docs/remote/ssh#_connect-to-a-remote-host)
 extension. You can follow the VSCode tutorials to connect to the `master VM` to follow with the
-tutorials. The VMs used in this tutorial need to be a debian-based distribution and would
-preferably be `Ubuntu 18.04` or `Ubuntu 20.04` with the standard `bash`.
-We also recommend the installation of the following extensions:
+tutorials.<br />
+VS code -> View tab -> Command Palette <br />
+Option: **Remote SSH: Connect to Host**<br />
+Add new SSH Host:<br />
+ssh ubuntu@10.0.0.1 -i /PATH/TO/SSHKEY<br />
+select a SSH configuration file to update -> /Users/username/.ssh/config<br />
+from the bottom of the window select connect button<br />
+(if asked enter the pass phrase for private key and press enter)<br />
+
+We also recommend the installation of the following extensions (From the right panel select Extensions):
 
 - `Python` by `Microsoft`
 - `Jupyter` by `Microsoft`
@@ -126,18 +133,18 @@ bash ~/miniconda.sh -b -p $HOME/miniconda
 echo 'eval "$(~/miniconda/bin/conda shell.bash hook)"' >> ~/.bashrc && source ~/.bashrc
 ```
 
-After the installation is complete, you can test your installation using the following:
+After the installation is complete, you can test your installation using the following (It's not important to have the same version):
 
 ```console
 $ conda --version
-conda 4.9.2
+conda 22.11.1
 ```
 
 Next, connect to the master node using visual studio code.
 Then, open an empty file with `.py` extension to activate the python
 extension on VS Code and click on the
 `Select Python Interpreter` button on the bottom left corner of the window and
-select `Python 3.8.x 64-bit ('base': conda)` to use as the default python
+select `Python ... ('base': conda)` to use as the default python
 environment.
 
 Now that we have done our initialization step, you are ready to install
