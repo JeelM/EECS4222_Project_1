@@ -199,7 +199,7 @@ for windows, or run the following for MacOS and Linux:
 ```sh
 curl -sLS https://get.k3sup.dev | sudo sh
 ```
-if it didn't work try: < /br>
+if it didn't work try:
 ```sh
 curl -sLS https://get.k3sup.dev | sh
 ```
