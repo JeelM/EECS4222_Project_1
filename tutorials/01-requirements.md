@@ -2,27 +2,28 @@
 
 To move along this tutorial and set up the required tools and applications, you will
 need access to a cloud computing infrastructure including a set of Virtual Machines (VMs).
-You should have already received an email containing above information.
-Make sure that you have ssh access to those resources and that you are comfortable
-using the `bash` to interact with the server before you continue this tutorial.
 
-For this tutorial,
+<!-- You should have already received an email containing above information. -->
+By now, you should get connected to the Windows machine by using RDP installed on your laptop. Also, you should have Hyper-V Manager installed on Windows.
+Make sure you have access to these resources and are comfortable using the `bash` to interact with the server before you continue this tutorial.
+
+<!-- For this tutorial,
 imagine the provided ssh private and public key is stored in `~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub`
 and thus will automatically be used for ssh communications; in case you stored the keys in a
 different location, you need to use the `-i` option for all ssh commands, like below:
 
-`# ssh username@ip_address -i private_key`
+`# ssh username@ip_address -i private_key` -->
 
 To set up a Kubernetes cluster, we will need different VMs to take `master` and `worker` roles.
 `master` nodes will be responsible for keeping the cluster running and scheduling resources on available
 nodes while `worker` nodes will be responsible for running those workloads.
 You will need to specify one of the VMs assigned to you as the `master`, and the rest as `worker`s.
-Throughout this tutorial, we assume a cluster of two nodes including a `master` with ip equal to `10.1.1.1` 
-and a worker with ip of `10.1.1.2`. 
+Throughout this tutorial, we assume a cluster of two nodes including a `master` with ip equal to `192.168.0.100` 
+and a worker with ip of `192.168.0.101`. 
 If you have more than one `worker` VM, repeat the worker VM commands for all other `workers`.
 
 
-## OpenVPN Connection
+<!-- ## OpenVPN Connection
 
 To gain access to your VMs on our cloud, you will need to connect to our internal
 network. To do so, you can use OpenVPN Connect to connect using the configuration file provided
@@ -33,10 +34,20 @@ configuration onto OpenVPN Connect. Then, you will need to give the connection a
 and will be able to connect to the VPN server.
 
 After connecting to the OpenVPN connection, you can test your connection by pinging the internal IP addresses
-of the instances provided to you.
+of the instances provided to you. -->
 
 ## SSH Access
 
+To ssh onto the master or worker, use the default `eecs` user:
+
+```sh
+# ssh to the master
+$ ssh eecs@192.168.0.100
+# ssh to the worker
+$ ssh eecs@192.168.0.101
+```
+
+<!-- 
 To ssh onto the master or worker, use the default `ubuntu` user:
 
 ```sh
@@ -46,7 +57,7 @@ $ ssh ubuntu@10.1.1.1
 $ ssh ubuntu@10.1.1.2
 # ssh to master if the private ssh key is not stored in the default place
 $ ssh ubuntu@10.1.1.1 -i /PATH/TO/SSHKEY
-```
+``` -->
 
 To learn more about SSH and how you can use it, watch [this tutorial](https://youtu.be/YS5Zh7KExvE).
 
@@ -60,7 +71,7 @@ tutorials.<br />
 VS code -> View tab -> Command Palette <br />
 Option: **Remote SSH: Connect to Host**<br />
 Add new SSH Host:<br />
-ssh ubuntu@10.0.0.1 -i /PATH/TO/SSHKEY<br />
+ssh eecs@192.168.0.100 <br/>
 select a SSH configuration file to update -> /Users/username/.ssh/config<br />
 from the bottom of the window select connect button<br />
 (if asked enter the pass phrase for private key and press enter)<br />
@@ -86,12 +97,26 @@ is network connectivity between your VMs by checking their `ping` status.
 
 ```sh
 # ssh to the master and check connectivity with the workers
-(master) $ ping 10.1.1.2
+(master) $ ping 192.168.0.100
 ```
 
-Make sure to replace `10.1.1.2` with your worker VM IPs.
+Make sure to replace `192.168.0.101` with your worker VM IPs.
 You should see an output like this:
 
+```console
+Pinging 192.168.0.100 with 32 bytes of data:
+Reply from 192.168.0.100: bytes=32 time=2ms TTL=64
+Reply from 192.168.0.100: bytes=32 time<1ms TTL=64
+Reply from 192.168.0.100: bytes=32 time<1ms TTL=64
+Reply from 192.168.0.100: bytes=32 time<1ms TTL=64
+
+Ping statistics for 192.168.0.100:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 2ms, Average = 0ms
+```
+
+<!-- 
 ```console
 PING 10.1.1.2 (10.1.1.2) 56(84) bytes of data.
 64 bytes from 10.1.1.2: icmp_seq=1 ttl=64 time=1.00 ms
@@ -103,8 +128,9 @@ PING 10.1.1.2 (10.1.1.2) 56(84) bytes of data.
 64 bytes from 10.1.1.2: icmp_seq=7 ttl=64 time=0.346 ms
 64 bytes from 10.1.1.2: icmp_seq=8 ttl=64 time=0.362 ms
 ```
-
-## Firewall Configurations
+ -->
+ 
+<!-- ## Firewall Configurations
 
 The firewall configuration has been already done on your VMs, but generally we need the following
 ports to be open for this tutorial:
@@ -115,14 +141,14 @@ ports to be open for this tutorial:
 - `TCP` port `80` for the web application
 - `TCP` port `9090` for prometheus
 - `TCP` port `8091` for locust
-- `TCP` port `3000` for grafana
+- `TCP` port `3000` for grafana -->
 
 ## Anaconda Installation
 
 In this project, we will be using Python for interacting with our cluster. Using other
 programming languages is also possible, but might need additional setup from you. You
 can install [Anaconda](https://docs.conda.io/en/latest/) to act as the environment manager on your cluster.
-Run the following on your `master` node:
+**Run the following on your `master` node:**
 
 ```sh
 # download miniconda
