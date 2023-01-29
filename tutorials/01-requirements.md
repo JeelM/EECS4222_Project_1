@@ -4,8 +4,8 @@ To move along this tutorial and set up the required tools and applications, you 
 need access to a cloud computing infrastructure including a set of Virtual Machines (VMs).
 
 <!-- You should have already received an email containing above information. -->
-By now, you should get connected to the Windows machine by using RDP installed on your laptop. Also, you should have Hyper-V Manager installed on Windows.
-Make sure you have access to these resources and are comfortable using the `bash` to interact with the server before you continue this tutorial.
+
+So far, you should be able to get connected to the Windows machine by using RDP installed on your laptop. Also, you should have Hyper-V Manager installed on Windows. Make sure you have access to these resources and are comfortable using the `bash` to interact with the server before you continue this tutorial.
 
 <!-- For this tutorial,
 imagine the provided ssh private and public key is stored in `~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub`
