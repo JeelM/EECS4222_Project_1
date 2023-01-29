@@ -104,16 +104,16 @@ Make sure to replace `192.168.0.101` with your worker VM IPs.
 You should see an output like this:
 
 ```console
-Pinging 192.168.0.100 with 32 bytes of data:
-Reply from 192.168.0.100: bytes=32 time=2ms TTL=64
-Reply from 192.168.0.100: bytes=32 time<1ms TTL=64
-Reply from 192.168.0.100: bytes=32 time<1ms TTL=64
-Reply from 192.168.0.100: bytes=32 time<1ms TTL=64
+Pinging 192.168.0.101 with 32 bytes of data:
+Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
+Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
+Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
+Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
 
-Ping statistics for 192.168.0.100:
+Ping statistics for 192.168.0.101:
     Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
 Approximate round trip times in milli-seconds:
-    Minimum = 0ms, Maximum = 2ms, Average = 0ms
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
 ```
 
 <!-- 
