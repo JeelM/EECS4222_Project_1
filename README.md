@@ -1,6 +1,7 @@
-# EECS4222: Distributed Computing Systems: Project 1
-**Start:** XX, 2023, @ 9:00am EST   
-**Due:** YY, 2023, by 9:00pm EST
+# EECS4222: Distributed Computing Systems: Project 1 (20%)
+**Title:** Autoscaling for Microservices in Cloud
+**Start:** Feb 5, 2023, @ 9:00am EST   
+**Due:** Feb 26, 2023, by 9:00pm EST
 
 Welcome to `EECS4222` course project. In this project, you will deploy a sample
 application based on microservice architecture on a `Kubernetes` cluster. Then you exercise various
