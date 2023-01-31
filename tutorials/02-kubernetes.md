@@ -224,13 +224,13 @@ In case you did not include your private and public keys in the default path (`.
 # set your key location here
 export KEY_LOCATION="/PATH/TO/YOUR/PRIVATE_KEY"
 
-k3sup join --ip $WORKER_IP \\
-    --user $WORKER_USER \\
-    --server-ip $MASTER_IP \\
-    --server-user $MASTER_USER \\
-    --k3s-extra-args "--node-external-ip $WORKER_IP --node-ip $WORKER_IP" \\
-    --k3s-channel stable \\
-    --print-command \\
+k3sup join --ip $WORKER_IP \
+    --user $WORKER_USER \
+    --server-ip $MASTER_IP \
+    --server-user $MASTER_USER \
+    --k3s-extra-args "--node-external-ip $WORKER_IP --node-ip $WORKER_IP" \
+    --k3s-channel stable \
+    --print-command \
     --ssh-key $KEY_LOCATION
 ```
 
