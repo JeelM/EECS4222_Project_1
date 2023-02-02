@@ -1,7 +1,10 @@
 # Requirements
 
 To move along this tutorial and set up the required tools and applications, you will
-need access to a cloud computing infrastructure including a set of Virtual Machines (VMs).
+need access to a cloud computing infrastructure including a set of Virtual Machines (VMs). In this project, we have 3 VMs and we assume differenct roles for these VMs. </br>
+1. MASTER node: server1 with IP address 192.168.0.100
+2. WORKER node: server2 with IP address 192.168.0.101
+3. Cluster head: serevr3 with IP address 192.168.0.102
 
 <!-- You should have already received an email containing above information. -->
 
