@@ -38,7 +38,7 @@ of the instances provided to you. -->
 
 ## SSH Access
 
-To ssh onto the master or worker, use the default `eecs` user:
+To ssh onto the master or worker, use the default `eecs` user. The password for 'eecs' user is 'eecs'.
 
 ```sh
 # ssh to the master
@@ -63,7 +63,7 @@ $ ssh ubuntu@10.1.1.1 -i /PATH/TO/SSHKEY
 
 To learn more about SSH and how you can use it, watch [this tutorial](https://youtu.be/YS5Zh7KExvE).
 
-## Visual Studio Code
+<!-- ## Visual Studio Code
 
 The easiest way to interact with your virtual machine is using Visual Studio Code 
 Remote Development via SSH. To use this feature, you need to install the
@@ -83,7 +83,7 @@ We also recommend the installation of the following extensions (From the right p
 - `Python` by `Microsoft`
 - `Jupyter` by `Microsoft`
 - `Kubernetes` by `Microsoft`
-- `Pylance` by `Microsoft`
+- `Pylance` by `Microsoft` -->
 
 ## Initial Setup
 
@@ -91,7 +91,7 @@ First, we need to update all packages installed on all VMs:
 
 ```sh
 # update the package list and upgrade installed packages on all machines
-(master and worker) $ sudo apt-get update && sudo apt-get upgrade -qy
+(master, worker and cluster head) $ sudo apt-get update && sudo apt-get upgrade -qy
 ```
 
 In case you will be using more than one VM for your cluster, make sure that there
@@ -102,7 +102,7 @@ is network connectivity between your VMs by checking their `ping` status.
 (master) $ ping 192.168.0.100
 ```
 
-Make sure to replace `192.168.0.101` with your worker VM IPs.
+Make sure to replace `192.168.0.101` with your worker VM IP.
 You should see an output like this:
 
 ```console
@@ -116,6 +116,24 @@ Ping statistics for 192.168.0.101:
     Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
 Approximate round trip times in milli-seconds:
     Minimum = 0ms, Maximum = 0ms, Average = 0ms
+```
+
+## SSH-key
+
+SSH keys are used to establish secure connections between two devices, allowing for secure and authenticated access to remote systems. SSH keys provide a more secure way to log in to a remote server than using a password alone. An SSH key pair typically consists of a private key, which should be kept confidential and stored on the client machine, and a public key, which can be shared and stored on remote servers. When connecting to a remote server using SSH, the client first authenticates using its private key, and the server then verifies the authenticity of the client's public key. If the public key matches the private key, the server grants access to the client. </ br>
+In this project, we generate ssh key on server3 and then copy the ssh public key to server1 and server2.
+```sh
+# Generate an SSH key pair
+ssh-keygen
+```
+
+```console
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/eecs/.ssh/id_rsa): [enter]
+Enter passphrase (empty for no passphrase): [enter]
+Enter same passphrase again: [enter]
+Your identification has been saved in /home/eecs/.ssh/id_rsa
+Your public key has been saved in /home/eecs/.ssh/id_rsa.pub
 ```
 
 <!-- 
@@ -168,12 +186,12 @@ $ conda --version
 conda 22.11.1
 ```
 
-Next, connect to the master node using visual studio code.
+<!-- Next, connect to the master node using visual studio code.
 Then, open an empty file with `.py` extension to activate the python
 extension on VS Code and click on the
 `Select Python Interpreter` button on the bottom left corner of the window and
 select `Python ... ('base': conda)` to use as the default python
-environment.
+environment. -->
 
 Now that we have done our initialization step, you are ready to install
 Kubernetes and other required tools on your cluster. 
