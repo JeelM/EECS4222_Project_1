@@ -17,7 +17,7 @@ use the deployment outlined in this tutorial to deploy the monitoring infrastruc
 ## Helm Installation
 
 In this step, we will be using `helm` (previously installed) to deploy the prometheus monitoring
-stack on our cluster. Run the following commands on your master node:
+stack on our cluster. **Run the following commands on your master node:**
 
 ```sh
 # add helm repo
