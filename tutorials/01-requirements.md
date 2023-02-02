@@ -1,10 +1,8 @@
 # Requirements
 
 To move along this tutorial and set up the required tools and applications, you will
-need access to a cloud computing infrastructure including a set of Virtual Machines (VMs). In this project, we have 3 VMs and we assume differenct roles for these VMs. </br>
-1. MASTER node: server1 with IP address 192.168.0.100
-2. WORKER node: server2 with IP address 192.168.0.101
-3. Cluster head: serevr3 with IP address 192.168.0.102
+need access to a cloud computing infrastructure including a set of Virtual Machines (VMs).
+
 
 <!-- You should have already received an email containing above information. -->
 
@@ -17,14 +15,13 @@ different location, you need to use the `-i` option for all ssh commands, like b
 
 `# ssh username@ip_address -i private_key` -->
 
-To set up a Kubernetes cluster, we will need different VMs to take `master` and `worker` roles.
+To set up a Kubernetes cluster, we will need different VMs to take `master`, `worker`, and `cluster head` roles.
 `master` nodes will be responsible for keeping the cluster running and scheduling resources on available
-nodes while `worker` nodes will be responsible for running those workloads.
-You will need to specify one of the VMs assigned to you as the `master`, and the rest as `worker`s.
-Throughout this tutorial, we assume a cluster of two nodes including a `master` with ip equal to `192.168.0.100` 
-and a worker with ip of `192.168.0.101`. 
-If you have more than one `worker` VM, repeat the worker VM commands for all other `workers`.
-
+nodes while `worker` nodes will be responsible for running those workloads. Cluster head manages the nodes in the Kubernetes cluster and joins the worker node to the master.
+Throughout this tutorial, we assume a cluster of following nodes: </br>
+1. Master node: server1 with IP address 192.168.0.100
+2. Worker node: server2 with IP address 192.168.0.101
+3. Cluster head: serevr3 with IP address 192.168.0.102
 
 <!-- ## OpenVPN Connection
 
@@ -48,6 +45,8 @@ To ssh onto the master or worker, use the default `eecs` user:
 $ ssh eecs@192.168.0.100
 # ssh to the worker
 $ ssh eecs@192.168.0.101
+# ssh to the cluster head
+$ ssh eecs@192.168.0.102
 ```
 
 <!-- 
