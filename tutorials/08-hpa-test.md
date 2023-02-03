@@ -14,21 +14,21 @@ Before moving to our jupyter notebook, we need to install the dependencies of ou
 experimentation script. To do so, you can run the following command:
 
 ```console
-cd EECS4222_Project_1/notebooks/
-pip install -r requirements.txt
+$ cd EECS4222_Project_1/notebooks/
+$ pip install -r requirements.txt
 ```
 
 To open the jupyter notebook (EECS4222_Project_1/notebooks/experiment.ipynb) go to its' directory and run jupyter notebook:
 
-```console
+```sh
 # cd EECS4222_Project_1/notebooks/
-jupyter notebook
+$ jupyter notebook
 ```
 
 This will give you the link to open jupyter notebook interface. To be able to open the link on your Windows machine, run the following command on a new cmd window:
 
 ```console
-ssh -N -f -L localhost:8888:localhost:8888 eecs@192.168.0.100
+$ ssh -N -f -L localhost:8888:localhost:8888 eecs@192.168.0.100
 ```
 
 This notebook includes an integration of all the components we have deployed
