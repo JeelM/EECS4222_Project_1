@@ -45,7 +45,7 @@ loadgenerator-7747b67b5-s8t5c            1/1     Running   3          3m47s
 ```
 
 After the all the services are up and running, you can open the deployed
-website by going to the address `http://MASTER_IP`. You can also open
+website by openning the **Microsoft Edge** and going to the address `http://MASTER_IP`. You can also open
 the load generator UI by going to the address `http://MASTER_IP:8089`.
 
 Note that you need to replace `MASTER_IP` with the IP of your master node.
