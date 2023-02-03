@@ -8,20 +8,23 @@ libraries for different programming languages in
 To follow along with this tutorial, you will need to install and configure
 the [Python client library for kubernetes](https://github.com/kubernetes-client/python/).
 
-To ease the process of working with jupyter notebooks on the master node,
+<!-- To ease the process of working with jupyter notebooks on the master node,
 we suggest installing Visual Studio Code outlined in the requirements section
-along with the suggested extensions.
+along with the suggested extensions. -->
 
-First, let's install the necessary library to interact with the
+First, let's install the necessary library on the `master` VM to interact with the
 Kubernetes API:
 
 ```sh
 pip install kubernetes==12.0.1
 ```
 
-Then, we can move to our python code. You may use the [VS Code Jupyter Extension](https://code.visualstudio.com/docs/python/jupyter-support) for the next steps (from right panel choose Jupyter extension and from File tab choose new file -> python file), or use simple `.py` files.
-The following imports libraries
-and defines a couple of helper functions that we can use later on.
+Then, we can move to our python code. Create .py file on your master VM and copy paste the following code in it.
+To create a file, you can use `nano filename.py`.
+
+<!-- You may use the [VS Code Jupyter Extension](https://code.visualstudio.com/docs/python/jupyter-support) for the next steps (from right panel choose Jupyter extension and from File tab choose new file -> python file), or use simple `.py` files. -->
+
+The following code imports libraries and defines a couple of helper functions that we can use later on.
 
 ```py
 from kubernetes import client, config
