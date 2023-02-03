@@ -43,6 +43,11 @@ def set_replica_num(rnum, deployment_name, deployment_ns="default"):
     api_response = api_instance.read_namespaced_deployment(deployment_name, deployment_ns)
     api_response.spec.replicas = rnum
     api_instance.patch_namespaced_deployment_scale(deployment_name, deployment_ns, api_response)
+    
+    
+# Example usage:
+# get_replica_and_ready('frontend')
+# set_replica_num(3,'frontend')
 ```
 
 Now we can use these functions to get or change the replica count for each deployment.
