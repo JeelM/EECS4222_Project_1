@@ -26,7 +26,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 # create monitoring namespace
 kubectl create ns monitoring
-# install operator
+# install operator (it takes some time)
 helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring \
     --set prometheus.prometheusSpec.scrapeInterval=10s
 # patch service to make it accessible
@@ -64,8 +64,8 @@ prometheus-kube-prometheus-alertmanager   ClusterIP      10.43.168.32    <none> 
 prometheus-prometheus-node-exporter       ClusterIP      10.43.247.38    <none>                        9100/TCP                     41m
 alertmanager-operated                     ClusterIP      None            <none>                        9093/TCP,9094/TCP,9094/UDP   41m
 prometheus-operated                       ClusterIP      None            <none>                        9090/TCP                     41m
-prometheus-kube-prometheus-prometheus     LoadBalancer   10.43.195.135   10.1.1.1,10.1.1.2             9090:31673/TCP               41m
-prometheus-grafana                        LoadBalancer   10.43.243.216   10.1.1.1,10.1.1.2             3000:30331/TCP               41m
+prometheus-kube-prometheus-prometheus     LoadBalancer   10.43.195.135   192.168.0.100,192.168.0.101             9090:31673/TCP               41m
+prometheus-grafana                        LoadBalancer   10.43.243.216   192.168.0.100,192.168.0.101             3000:30331/TCP               41m
 ```
 
 Now, you should be able to open Prometheus on `http://MASTER_IP:9090` and Grafana on `http://MASTER_IP:3000`. The
