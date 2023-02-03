@@ -18,7 +18,19 @@ cd EECS4222_Project_1/notebooks/
 pip install -r requirements.txt
 ```
 
-Use VS Code to open the jupyter notebook in the path `EECS4222_Project_1/notebooks/experiment.ipynb`.
+To open the jupyter notebook (EECS4222_Project_1/notebooks/experiment.ipynb) go to its' directory and run jupyter notebook:
+
+```sh
+cd EECS4222_Project_1/notebooks/
+jupyter notebook
+```
+
+This will give you the link to open jupyter notebook interface. To be able to open the link on your Windows machine, run the following command on a new cmd window:
+
+```sh
+ssh -N -f -L localhost:8888:localhost:8888 eecs@192.168.0.100
+```
+
 This notebook includes an integration of all the components we have deployed
 to our cluster and uses their respective APIs to get monitoring/actionable data.
 You can see a preview of the jupyter notebook on [GitHub](https://github.com/hamzehkhazaei/EECS4222_Project_1/blob/master/notebooks/experiment.ipynb).
