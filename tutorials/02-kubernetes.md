@@ -12,8 +12,8 @@ Before installing Kubernetes, we need to install some tools that we will be usin
 ### Docker
 
 You might need docker for local development of containers before deploying
-them to Kubernetes. So, we recommend that you install Docker on the master
-VM to have the tools available to you. Notice that seeing errors in this section (setting the permissions for Docker) is OK.
+them to Kubernetes. So, we recommend that you install Docker on the **master**
+VM to have the tools available to you. **Notice** that seeing errors in this section (setting the permissions for Docker) is OK.
 
 ```sh
 # install docker
@@ -82,8 +82,8 @@ use to interact with our kubernetes cluster. `Helm` is the most used package man
 simplifies the process of installing and updating kubernetes applications. `K3sup` is a tool that simplifies
 the process of setting up our kubernetes cluster with minimal effort.
 
-To install the Arkade and some other tools you might need for interacting with your cluster,
-you can use the following installation scripts:
+To install the Arkade and some other tools that you might need for interacting with your cluster,
+you can use the following installation scripts on the **master** VM:
 
 ```sh
 # install arkade
@@ -109,7 +109,7 @@ export PATH=$PATH:$HOME/.arkade/bin/
 
 ```
 
-You can test your installation using following commands. Notice that the error shown for `kubectl version` is not important, as we have not yet installed our kubernetes cluster.
+You can test your installation using following commands. **Notice** that the error shown for `kubectl version` is not important, as we have not yet installed our kubernetes cluster.
 
 ```console
 $ arkade version
@@ -188,7 +188,7 @@ Which should yield an output like the following:
 ```console
 $ kubectl get nodes -o wide
 NAME                  STATUS   ROLES                  AGE   VERSION        INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION     CONTAINER-RUNTIME
-ktest-eecs6446        Ready    control-plane,master   6s    v1.20.0+k3s2   10.1.1.1        <none>        Ubuntu 20.04.1 LTS   5.4.0-56-generic   containerd://1.4.3-k3s1
+ktest-eecs6446        Ready    control-plane,master   6s    v1.20.0+k3s2   192.168.0.100        <none>        Ubuntu 22.04.1 LTS   5.4.0-56-generic   containerd://1.4.3-k3s1
 ```
 
 The status shown as `Ready` shows everything went smoothly and we have completely set up our master node.
@@ -199,26 +199,21 @@ for windows, or run the following for MacOS and Linux:
 ```sh
 curl -sLS https://get.k3sup.dev | sudo sh
 ```
-if it didn't work try:
-```sh
-curl -sLS https://get.k3sup.dev | sh
-```
 
-Next, you need to have the `worker nodes` join your kubernetes cluster. Run the following
-commands on your **laptop** (replace the master and worker IPs). Make sure to repeat this process
-for every worker node in the cluster.
+Next, you need to have the `worker node` join your kubernetes cluster. Run the following
+commands on `Cluster head`.
 
 ```sh
 # master information
-export MASTER_IP=10.1.1.1
-export MASTER_USER=ubuntu
+export MASTER_IP=192.168.0.100
+export MASTER_USER=eecs
 # worker information
-export WORKER_IP=10.1.1.2
-export WORKER_USER=ubuntu
+export WORKER_IP=192.168.0.101
+export WORKER_USER=eecs
 k3sup join --ip $WORKER_IP --user $WORKER_USER --server-ip $MASTER_IP --server-user $MASTER_USER --k3s-extra-args "--node-external-ip $WORKER_IP --node-ip $WORKER_IP" --k3s-channel stable --print-command
 ```
 
-In case you did not include your private and public keys in the default path (`.ssh/id_rsa` and `.ssh/id_rsa.pub`), you need to specify them whenever you want to connect with your remote VM. In order to do so, you need to perform the **join** command in the following way, setting the `KEY_LOCATION` to the path to your private key:
+In case you did not include your private and public keys in the default path (`~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub`), you need to specify them whenever you want to connect with your remote VM. In order to do so, you need to perform the **join** command in the following way, setting the `KEY_LOCATION` to the path to your private key:
 
 ```sh
 # set your key location here
@@ -239,11 +234,11 @@ If everything goes as planned, you should see an output like the following:
 ```sh
 $ k3sup join --ip $WORKER_IP --user $WORKER_USER --server-ip $MASTER_IP --server-user $MASTER_USER --k3s-extra-args "--node-external-ip $WORKER_IP --node-ip $WORKER_IP" --k3s-channel stable --print-command
 Running: k3sup join
-Server IP: 10.1.1.1
+Server IP: 192.168.0.100
 ssh: sudo cat /var/lib/rancher/k3s/server/node-token
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx::server:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-ssh: curl -sfL https://get.k3s.io | K3S_URL='https://10.1.1.1:6443' K3S_TOKEN='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx::server:xxxxxxxxxxxxxxxxxxxxxxxxx' INSTALL_K3S_CHANNEL='stable' sh -s - --node-external-ip 10.1.1.2 --node-ip 10.1.1.2
+ssh: curl -sfL https://get.k3s.io | K3S_URL='https://10.1.1.1:6443' K3S_TOKEN='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx::server:xxxxxxxxxxxxxxxxxxxxxxxxx' INSTALL_K3S_CHANNEL='stable' sh -s - --node-external-ip 192.168.0.101 --node-ip 192.168.0.101
 [INFO]  Finding release for channel stable
 [INFO]  Using v1.20.0+k3s2 as release
 [INFO]  Downloading hash https://github.com/rancher/k3s/releases/download/v1.20.0+k3s2/sha256sum-amd64.txt
@@ -283,12 +278,11 @@ We should also be able to see the new worker node added to the cluster by runnin
 ```sh
 (master) $ kubectl get nodes -o wide
 NAME                   STATUS   ROLES                  AGE   VERSION        INTERNAL-IP     EXTERNAL-IP     OS-IMAGE             KERNEL-VERSION     CONTAINER-RUNTIME
-ktest-eecs6446         Ready    control-plane,master   20m   v1.20.0+k3s2   10.1.1.1        <none>          Ubuntu 20.04.1 LTS   5.4.0-56-generic   containerd://1.4.3-k3s1
-ktest2-eecs6446        Ready    <none>                 31s   v1.20.0+k3s2   10.1.1.2        10.1.1.2        Ubuntu 20.04.1 LTS   5.4.0-56-generic   containerd://1.4.3-k3s1
+ktest-eecs6446         Ready    control-plane,master   20m   v1.20.0+k3s2   192.168.0.100        <none>          Ubuntu 22.04.1 LTS   5.4.0-56-generic   containerd://1.4.3-k3s1
+ktest2-eecs6446        Ready    <none>                 31s   v1.20.0+k3s2   192.168.0.101        192.168.0.101        Ubuntu 22.04.1 LTS   5.4.0-56-generic   containerd://1.4.3-k3s1
 ```
 
-Notice the `Ready` status for both VMs. Repeat this process for all `worker` VMs to have the
-cluster ready.
+Notice the `Ready` status for both VMs.
 
 Now that our cluster is set up and ready to use, we can proceed to the [next step](03-microservice.md). You can check
 out some of the most used `kubectl` commands on [their documentations](https://kubernetes.io/docs/reference/kubectl/overview/).
