@@ -213,6 +213,14 @@ $ conda --version
 conda 22.11.1
 ```
 
+## Jupyter Notebook Installation
+
+Jupyter Notebook is a web-based interactive computational environment for creating and sharing documents that contain live code, equations, visualizations, and narrative text. Jupyter Notebook allows you to combine code, markdown, and multimedia in a single document, making it a powerful tool for data exploration and presentation. It is open-source software, built on top of the IPython (Interactive Python) shell, and runs on a variety of platforms, including Windows, MacOS, and Linux. You can install Jupyter on **master** VM using the conda package manager as follows:
+
+```sh
+$ conda install jupyter
+```
+
 <!-- Next, connect to the master node using visual studio code.
 Then, open an empty file with `.py` extension to activate the python
 extension on VS Code and click on the
