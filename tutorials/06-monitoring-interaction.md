@@ -4,7 +4,7 @@ In this section, we will learn to run some queries on Prometheus to get some of 
 data about our deployment. You can run the following queries **in the Prometheus ui**
 which can be accessed on `http://MASTER_IP:9090`. You can check [this tutorial](https://opensource.com/article/19/11/introduction-monitoring-prometheus)
 and [the official docs](https://prometheus.io/docs/prometheus/latest/querying/basics/)
-for an introduction to PromQL, the querying language used by Prometheus.
+for an introduction to PromQL, the querying language used by Prometheus. **Notice** to use Microsoft Edge as your web browser.
 
 ## Get a List of Deployments
 
@@ -67,7 +67,7 @@ The result would be similar to the following (we manually scaled `frontend` to 3
 
 The `created_by_name` returned always starts with the name of the deployment. You can
 use this to automate this process. To manually change the number of pods running
-a specific service, you can use the following command:
+a specific service, you can use the following command on the **master** VM:
 
 ```sh
 kubectl scale --replicas=3 deploy/frontend
