@@ -19,7 +19,7 @@ Kubernetes API:
 pip install kubernetes==12.0.1
 ```
 
-Then, we can move to our python code. Create .py file on your master VM and copy paste the following code in it.
+Then, we can move to our python code. Create `.py` file on your master VM and copy paste the following code in it.
 To create a file, you can use `nano filename.py`.
 
 <!-- You may use the [VS Code Jupyter Extension](https://code.visualstudio.com/docs/python/jupyter-support) for the next steps (from right panel choose Jupyter extension and from File tab choose new file -> python file), or use simple `.py` files. -->
