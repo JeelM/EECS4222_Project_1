@@ -143,7 +143,7 @@ $ ssh-copy-id eecs@192.168.0.100
 $ ssh-copy-id eecs@192.168.0.101
 ```
 
-## Give eecs some priviledges
+## Give 'eecs' user some priviledges
 For some of the commands, you need to write 'sudo' to run the command with the root access. 'sudo' asks password from the user. By adding `eecs ALL=(ALL) NOPASSWD:ALL` at the end of the sudoers file, eecs user won't have to enter password when writing sudo.
 
 ```sh
