@@ -17,7 +17,7 @@ different location, you need to use the `-i` option for all ssh commands, like b
 
 To set up a Kubernetes cluster, we will need different VMs to take `master`, `worker`, and `cluster head` roles.
 `master` nodes will be responsible for keeping the cluster running and scheduling resources on available
-nodes while `worker` nodes will be responsible for running those workloads. Cluster head manages the nodes in the Kubernetes cluster and joins the worker node to the master.
+nodes while `worker` nodes will be responsible for running those workloads. `Cluster head` manages the nodes in the Kubernetes cluster and joins the worker node to the master.
 Throughout this tutorial, we assume a cluster of following nodes: </br>
 1. Master node: server1 with IP address 192.168.0.100
 2. Worker node: server2 with IP address 192.168.0.101
@@ -87,7 +87,7 @@ We also recommend the installation of the following extensions (From the right p
 
 ## Initial Setup
 
-First, we need to update all packages installed on all VMs:
+First, we need to update all packages installed on all VMs. At the end of the following command, the OS asks for restarting some of the services, press `cancel` and move on.
 
 ```sh
 # update the package list and upgrade installed packages on all machines
@@ -126,6 +126,7 @@ In this project, we generate ssh key on server3 and then copy the ssh public key
 
 
 ```console
+# Generating ssh key
 $ ssh-keygen
 
 Generating public/private rsa key pair.
@@ -144,7 +145,7 @@ $ ssh-copy-id eecs@192.168.0.101
 ```
 
 ## Give 'eecs' user some priviledges
-For some of the commands, you need to write 'sudo' to run the command with the root access. 'sudo' asks password from the user. By adding `eecs ALL=(ALL) NOPASSWD:ALL` at the end of the sudoers file, eecs user won't have to enter password when writing sudo.
+For some of the commands, you need to write `sudo` to run the command with the root access. `sudo` asks password from the user. By adding `eecs ALL=(ALL) NOPASSWD:ALL` at the end of the sudoers file, eecs user won't have to enter password when writing sudo.
 
 ```sh
 # open sudoers file
@@ -153,7 +154,7 @@ $ sudo visudo
 # add following command at the end of the file
 eecs ALL=(ALL) NOPASSWD:ALL
 
-# press ctrl+ O, ENTER, and then ctrl+X
+# press ctrl+O (write out), ENTER (save), and then ctrl+X (exit)
 ```
 
 
