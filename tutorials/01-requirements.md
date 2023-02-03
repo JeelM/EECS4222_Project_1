@@ -153,6 +153,7 @@ $ sudo visudo
 # add following command at the end of the file
 eecs ALL=(ALL) NOPASSWD:ALL
 
+# press ctrl+ O, ENTER, and then ctrl+X
 ```
 
 
