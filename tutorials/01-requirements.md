@@ -38,13 +38,17 @@ of the instances provided to you. -->
 
 ## SSH Access
 
-To ssh onto the master or worker, use the default `eecs` user. The password for 'eecs' user is 'eecs'.
+To ssh onto the master or worker, use the `eecs` user. The password for 'eecs' user is 'eecs'. Open Command Prompt application (cmd.exe) on Windows for 3 times and connect to the server1, server2, and server3 through ssh.
 
 ```sh
 # ssh to the master
 $ ssh eecs@192.168.0.100
+```
+```sh
 # ssh to the worker
 $ ssh eecs@192.168.0.101
+```
+```sh
 # ssh to the cluster head
 $ ssh eecs@192.168.0.102
 ```
