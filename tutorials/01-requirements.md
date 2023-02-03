@@ -120,21 +120,42 @@ Approximate round trip times in milli-seconds:
 
 ## SSH-key
 
-SSH keys are used to establish secure connections between two devices, allowing for secure and authenticated access to remote systems. SSH keys provide a more secure way to log in to a remote server than using a password alone. An SSH key pair typically consists of a private key, which should be kept confidential and stored on the client machine, and a public key, which can be shared and stored on remote servers. When connecting to a remote server using SSH, the client first authenticates using its private key, and the server then verifies the authenticity of the client's public key. If the public key matches the private key, the server grants access to the client. </ br>
+SSH keys are used to establish secure connections between two devices, allowing for secure and authenticated access to remote systems. SSH keys provide a more secure way to log in to a remote server than using a password alone. An SSH key pair typically consists of a private key, which should be kept confidential and stored on the client machine, and a public key, which can be shared and stored on remote servers. When connecting to a remote server using SSH, the client first authenticates using its private key, and the server then verifies the authenticity of the client's public key. If the public key matches the private key, the server grants access to the client. 
 In this project, we generate ssh key on server3 and then copy the ssh public key to server1 and server2.
-```sh
-# Generate an SSH key pair
-ssh-keygen
-```
+
+
 
 ```console
+$ ssh-keygen
+
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/eecs/.ssh/id_rsa): [enter]
 Enter passphrase (empty for no passphrase): [enter]
 Enter same passphrase again: [enter]
 Your identification has been saved in /home/eecs/.ssh/id_rsa
 Your public key has been saved in /home/eecs/.ssh/id_rsa.pub
+...
 ```
+
+```sh
+# This copies the server3's public key to the server1 and server2 authorized keys file
+$ ssh-copy-id eecs@192.168.0.100
+$ ssh-copy-id eecs@192.168.0.101
+```
+
+## Give eecs some priviledges
+For some of the commands, you need to write 'sudo' to run the command with the root access. 'sudo' asks password from the user. By adding `eecs ALL=(ALL) NOPASSWD:ALL` at the end of the sudoers file, you won't have to enter password when writing sudo.
+
+```sh
+# open sudoers file
+$ sudo visudo
+
+# add following command at the end of the file
+# eecs ALL=(ALL) NOPASSWD:ALL
+
+```
+
+
 
 <!-- 
 ```console
