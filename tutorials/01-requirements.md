@@ -158,7 +158,7 @@ $ sudo visudo
 # add following command at the end of the file
 eecs ALL=(ALL) NOPASSWD:ALL
 
-# press ctrl+O (write out), ENTER (save), and then ctrl+X (exit)
+# press ctrl+o (write out), ENTER (save), and then ctrl+x (exit)
 ```
 
 
