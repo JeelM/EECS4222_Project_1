@@ -11,7 +11,7 @@ properly for the following scenarios. You may use Zoom to record your screen and
 
 Your kubernetes cluster should be up and running, your nodes should all be in the
 state `Ready`, all pods should be in the state `Running`, and your installation should
-generally be healthy. Capture your screen while you are showing all above. 
+generally be healthy.
 
 ## 2. Application Deployment (25% -- max 3 minute length)
 
