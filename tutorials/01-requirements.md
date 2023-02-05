@@ -16,7 +16,7 @@ different location, you need to use the `-i` option for all ssh commands, like b
 `# ssh username@ip_address -i private_key` -->
 
 To set up a Kubernetes cluster, we will need different VMs to take `master`, `worker`, and `cluster head` roles.
-`master` nodes will be responsible for keeping the cluster running and scheduling resources on available
+The `master` nodes will be responsible for keeping the cluster running and scheduling resources on available
 nodes while `worker` nodes will be responsible for running those workloads. `Cluster head` manages the nodes in the Kubernetes cluster and joins the worker node to the master.
 Throughout this tutorial, we assume a cluster of following nodes: </br>
 1. Master node: server1 with IP address 192.168.0.100
@@ -103,15 +103,14 @@ is network connectivity between your VMs by checking their `ping` status.
 
 ```sh
 # ssh to the master and check connectivity with the workers
-(master) $ ping 192.168.0.100
+(master) $ ping 192.168.0.101
 ```
 
-Make sure to replace `192.168.0.101` with your worker VM IP.
+Make sure to replace `192.168.0.101` with your worker VM IP, if different.
 You should see an output like this:
 
 ```console
 Pinging 192.168.0.101 with 32 bytes of data:
-Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
 Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
 Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
 Reply from 192.168.0.101: bytes=32 time<1ms TTL=64
@@ -148,8 +147,8 @@ $ ssh-copy-id eecs@192.168.0.100
 $ ssh-copy-id eecs@192.168.0.101
 ```
 
-## Give 'eecs' user some priviledges
-For some of the commands, you need to write `sudo` to run the command with the root access. `sudo` asks password from the user. By adding `eecs ALL=(ALL) NOPASSWD:ALL` at the end of the sudoers file, eecs user won't have to enter password when writing sudo.
+## The 'eecs' user on Ubuntu VMs
+For some of the commands, you need to use `sudo` to run the command with the root access. `sudo` asks password from the user. By adding `eecs ALL=(ALL) NOPASSWD:ALL` at the end of the sudoers file, eecs user won't have to enter password each time using `sudo`.
 
 ```sh
 # open sudoers file
@@ -160,8 +159,7 @@ eecs ALL=(ALL) NOPASSWD:ALL
 
 # press ctrl+o (write out), ENTER (save), and then ctrl+x (exit)
 ```
-
-
+**Note:** The `eecs` has already have root access so to go to root mode you just need to enter `sudo sh`. 
 
 <!-- 
 ```console
