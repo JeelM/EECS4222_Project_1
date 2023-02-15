@@ -193,8 +193,9 @@ ktest-eecs6446        Ready    control-plane,master   6s    v1.20.0+k3s2   192.1
 
 The status shown as `Ready` shows everything went smoothly and we have completely set up our master node.
 Now, we need to have our other nodes (workers) join the kubernetes cluster. To do so, you need `k3sup` installed
-on your laptop. To do so, download k3sup executable from its [release page](https://github.com/alexellis/k3sup/releases) 
-for windows, or run the following for MacOS and Linux:
+on the cluster head.
+<!-- To do so, download k3sup executable from its [release page](https://github.com/alexellis/k3sup/releases) 
+for windows, or run the following for MacOS and Linux: -->
 
 ```sh
 curl -sLS https://get.k3sup.dev | sudo sh
